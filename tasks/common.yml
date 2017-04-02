@@ -1,0 +1,10 @@
+---
+
+#Perform common setup tasks
+
+ - name: update apt and upgrade current software
+   apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    upgrade: yes
+

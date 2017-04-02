@@ -1,0 +1,12 @@
+---
+
+# Ansible Demo
+# author: Adam Vincent
+
+- name: Perform common setup tasks on servers
+  hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+   - include: tasks/common.yml
+
