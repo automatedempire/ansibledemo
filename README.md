@@ -10,7 +10,7 @@ Ansible relies on SSH and Python.
  * You must define the three hosts (web01, web02, db01) in DNS, hosts files, or SSH configs so the machines can resolve them properly.
  * The control node must be able to SSH to all managed nodes. This includes setting proper firewall rules.
  * The webservers must have a route to the database.
- 
+  * A user on each managed node with `sudo` privileges. For simplicity, the user should have the same password on all managed nodes.
 
 ## Environment
 ### Servers
