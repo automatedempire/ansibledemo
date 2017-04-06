@@ -8,3 +8,19 @@
     cache_valid_time: 3600
     upgrade: yes
 
+ - name: install common utilities
+   apt:
+    state: present
+    name:
+     - vim
+     - dos2unix
+
+ - name: install pip
+   apt: name=python-pip state=present
+
+ - name: remove unnecessary packages
+   apt:
+    state: absent
+    name:
+     - adobe-flashplugin
+     - bluetooth
