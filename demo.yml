@@ -7,7 +7,5 @@
   hosts: all
   become: true
   become_method: sudo
-  tasks:
-   - include: tasks/common.yml
-   - include: tasks/security.yml
-
+  roles:
+   - common
