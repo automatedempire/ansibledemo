@@ -16,6 +16,12 @@
    policy: allow
    direction: outgoing
 
+- name: "(Security) Delete existing ssh rules"
+  ufw:
+   delete: yes
+   rule: allow
+   port: ssh
+
 - name: "(Security) Allow incoming ssh connections, but limit the connetion rate of failures (6 per 30 seconds) and log this rule"
   ufw:
     rule: limit
