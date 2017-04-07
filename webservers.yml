@@ -1,0 +1,11 @@
+---
+
+# Ansible Demo: webservers
+# Author: Adam Vincent
+
+- name: "Configure the web servers"
+  hosts: webservers
+  become: true
+  become_method: sudo
+  roles:
+   - webserver
