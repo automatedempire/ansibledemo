@@ -1,0 +1,10 @@
+---
+
+- name: "(User) Create an app user with access from all webservers"
+  mysql_user:
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   name: "app"
+   password: "{{ app_user_pass }}"
+   host: "{{ item }}"
+  with_items: "{{ groups['webservers'] }}"

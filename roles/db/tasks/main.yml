@@ -8,3 +8,6 @@
    name: mysql
    state: started
    enabled: yes
+
+- include: loaddatabase.yml
+- include: appuser.yml

@@ -1,0 +1,37 @@
+---
+
+- name: "(DB) Create a new database for our data"
+  mysql_db:
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   name: USA
+   state: present
+
+- name: "(DB) Copy table creation script to server"
+  copy:
+   src: tablesetup.sql
+   dest: /tmp
+
+- name: "(DB) Create tables"
+  mysql_db:
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   name: USA
+   state: import
+   target: /tmp/tablesetup.sql
+
+
+- name: "(DB) Copy State table data"
+  copy:
+   src: states.sql
+   dest: /tmp
+
+
+- name: "(DB) Load State data"
+  mysql_db:
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   name: USA
+   state: import
+   target: /tmp/states.sql
+
