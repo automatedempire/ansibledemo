@@ -1,6 +1,6 @@
 ---
 
-- name: Insall MySQL
+- name: Install MySQL
   apt:
    state: present
    name:

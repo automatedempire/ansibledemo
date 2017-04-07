@@ -7,4 +7,5 @@
    name: "app"
    password: "{{ app_user_pass }}"
    host: "{{ item }}"
+   priv: "USA.*:SELECT"
   with_items: "{{ groups['webservers'] }}"

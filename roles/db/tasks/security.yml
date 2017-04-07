@@ -5,3 +5,16 @@
    rule: allow
    port: 3306
    proto: tcp
+
+- name: "(Security) Bind to all addresses by commenting out bind-address"
+  lineinfile:
+   name: /etc/mysql/mysql.conf.d/mysqld.cnf
+   regexp: '^(bind-address.+)$'
+   line: '#\1'
+   backrefs: yes
+   state: present
+
+- name: "(Security) Restart MySQL for changes to take effect"
+  systemd:
+   name: mysql
+   state: restarted
