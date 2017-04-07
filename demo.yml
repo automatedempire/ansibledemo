@@ -9,4 +9,5 @@
   become_method: sudo
   tasks:
    - include: tasks/common.yml
+   - include: tasks/security.yml
 
