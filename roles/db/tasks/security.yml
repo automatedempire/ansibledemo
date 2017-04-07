@@ -1,0 +1,7 @@
+---
+
+- name: "(Security) Allow connections to the database through the firewall"
+  ufw:
+   rule: allow
+   port: 3306
+   proto: tcp

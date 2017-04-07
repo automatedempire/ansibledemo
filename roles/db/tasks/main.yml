@@ -1,0 +1,10 @@
+---
+
+- include: install.yml
+- include: security.yml
+
+- name: Enable MySQL
+  systemd:
+   name: mysql
+   state: started
+   enabled: yes

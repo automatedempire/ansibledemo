@@ -1,0 +1,11 @@
+---
+
+# Ansible Demo: Databases
+# Author: Adam Vincent
+
+- name: "Configure the database servers"
+  hosts: databases
+  become: true
+  become_method: sudo
+  roles:
+   - db

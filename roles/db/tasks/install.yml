@@ -1,0 +1,40 @@
+---
+
+- name: Insall MySQL
+  apt:
+   state: present
+   name:
+    - python-mysqldb
+    - mysql-server
+
+# Steps taken from https://dev.mysql.com/doc/refman/5.7/en/default-privileges.html
+
+- name: "(Secure_Install) Set root password for all local host names"
+  mysql_user:
+   check_implicit_admin: yes
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   name: root
+   password: "{{ mysql_root_pass }}"
+   priv: "*.*:ALL,GRANT"
+   host: "{{ item }}"
+  with_items:
+   - ::1
+   - 127.0.0.1
+   - "{{ ansible_nodename }}"
+   - localhost
+
+- name: "(Secure_Install) Remove blank user"
+  mysql_user:
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   name: ""
+   host_all: yes
+   state: absent
+
+- name: "(Secure_Install) Remove test database"
+  mysql_db:
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   db: test
+   state: absent
